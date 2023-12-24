@@ -1,3 +1,88 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+
+const description = "Learn about why we built Swach and why you should use it.";
 ---
+
+<Layout description={description} title="About">
+  <div class="flex flex-wrap justify-center w-full">
+    <div class="flex flex-wrap justify-center px-8 py-16 w-full">
+      <div class="max-w-6xl w-full z-10">
+        <div class="flex flex-col flex-wrap items-center w-full lg:flex-row">
+          <div class="w-full">
+            <h1 class="pb-4 pt-4 text-center text-4xl md:text-5.5xl w-full">
+              About Swach
+            </h1>
+
+            <div class="relative">
+              <div
+                class="bg-swach-blue -mr-8 -mt-2 square rotate-45 transform lg:h-72 lg:w-72"
+              >
+              </div>
+
+              <div
+                class="bg-white p-8 relative rounded-3xl z-10 lg:px-64 lg:py-16"
+              >
+                <div class="md:flex md:pt-2">
+                  <h2 class="text-2xl w-48">01</h2>
+                  <div>
+                    <h2 class="py-2 text-2xl md:pt-0">What is Swach?</h2>
+
+                    <p class="max-w-4xl mb-4 pb-4 pt-2">
+                      Swach is a robust color management tool for the modern
+                      age. It encompasses many features from several design apps
+                      we loved into a one stop shop color app.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="md:flex md:pt-2">
+                  <h2 class="text-2xl w-48">02</h2>
+                  <div>
+                    <h2 class="py-2 text-2xl md:pt-0">
+                      Why did you build Swach?
+                    </h2>
+
+                    <p class="max-w-4xl mb-4 pb-4 pt-2">
+                      We wanted to make the features of many popular macOS only
+                      design apps available to all designers and developers on
+                      all platforms. It was also a great learning experience in
+                      releasing cross platform software. You can read more about
+                      what we learned in our
+                      <a
+                        class="text-alt hover:text-color1"
+                        href="https://shipshape.io/work/swach/">case study</a
+                      >.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="md:flex md:pt-2">
+                  <h2 class="text-2xl w-48">03</h2>
+                  <div>
+                    <h2 class="py-2 text-2xl md:pt-0">
+                      Why should I use Swach?
+                    </h2>
+
+                    <p class="max-w-4xl mb-4 pb-4 pt-2">
+                      We believe Swach is everything you could need combined
+                      into one color app. It offers color palettes, a color
+                      combination generator (color harmonies), a contrast
+                      checker, and a color picker tool in one cross platform app
+                      you can use on macOS, Windows, and Linux. We are
+                      constantly working to improve Swach and we love to hear
+                      from our users and incorporate their valuable feedback
+                      into the core features of the app.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="circle -mt-96 lg:h-72 lg:w-72"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

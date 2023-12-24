@@ -1,0 +1,75 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const description = "Download Swach for free for Linux via Snapcraft.";
+---
+
+<Layout description={description} title="Download for Linux">
+  <div class="flex flex-wrap justify-center w-full">
+    <div class="flex flex-wrap justify-center px-8 py-16 w-full">
+      <div class="max-w-6xl w-full z-10">
+        <div class="flex flex-col flex-wrap items-center w-full lg:flex-row">
+          <div class="w-full" data-aos="fade-up">
+            <h1 class="pb-4 pt-4 text-4xl md:text-5.5xl">Swach for Linux</h1>
+
+            <p class="max-w-4xl pb-4 pt-4">
+              Here you can find various options for installing Swach on Linux.
+              Swach is built natively for Ubuntu/Debian, and support for various
+              other Linux distributions is added via Snapcraft. If your
+              distribution supports Snapcraft, you should be able to use Swach.
+            </p>
+
+            <h2 class="pb-4 pt-4 text-3xl">Install on Ubuntu</h2>
+
+            <p class="max-w-4xl pb-4 pt-4">
+              Go to
+              <a class="text-alt hover:text-color1" href="snap://swach">
+                Swach in Ubuntu Software
+              </a>
+               and click install. If the link doesn’t work, open Ubuntu Software
+              and search for Swach.
+            </p>
+
+            <h2 class="pb-4 pt-4 text-3xl">Install via command line</h2>
+
+            <h3 class="pb-4 pt-4 text-2xl">Snap</h3>
+
+            <div class="max-w-4xl pb-4 pt-4">
+              <div>
+                If you don’t have access or don’t want to use Ubuntu Software,
+                it is possible to install Swach from the command line with snap.
+                Run the following command in your terminal:
+                <code class="bg-blue-100 block mb-2 mt-2 p-2 text-md">
+                  snap install swach
+                </code>
+              </div>
+
+              <p>
+                If you run another Linux distribution than Ubuntu, first see
+                <a
+                  class="text-alt hover:text-color1"
+                  href="https://snapcraft.io/"
+                >
+                  https://snapcraft.io/
+                </a>
+                 for how to install snap, then run the command above.
+              </p>
+            </div>
+
+            <h3 class="pb-4 pt-4 text-2xl">Debian/Ubuntu</h3>
+
+            <p class="max-w-4xl pb-4 pt-4">
+              You can manually download the latest debian build
+              <a
+                class="text-alt hover:text-color1"
+                href="https://download.swach.io/download/deb/"
+              >
+                here.
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

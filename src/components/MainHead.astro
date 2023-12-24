@@ -1,7 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 
-
 export interface Props {
   title: string;
   canonicalURL?: string | URL;
@@ -66,3 +65,22 @@ const keywords = tags?.join(', ');
 {date && <meta property="article:published_time" content={date}/>}
 
 {tags && tags.map(tag => <meta property="article:tag" content={tag}/>)}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Swach",
+    "applicationCategory": "https://schema.org/DesignApplication",
+    "operatingSystem": "macOS 10.14+, Windows 10, Ubuntu 18.04+",
+    "featureList": "Color picker, contrast checker, color palettes, color harmonies",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "legalName": "Ship Shape Consulting LLC"
+    }
+  }
+  </script>
