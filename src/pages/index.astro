@@ -1,22 +1,25 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-import colorPicker from '../assets/img/color-picker.png';
-import swachImg from '../assets/img/swach.png';
+import colorPicker from "../assets/img/color-picker.png";
+import swachImg from "../assets/img/swach.png";
 
-import colorPickerIcon from '../assets/svgs/color-picker-icon.svg';
-import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
+import colorHarmoniesIcon from "../assets/svgs/color-harmonies-icon.svg";
+import colorPickerIcon from "../assets/svgs/color-picker-icon.svg";
+import contrastCheckerIcon from "../assets/svgs/contrast-checker-icon.svg";
+import palettesIcon from "../assets/svgs/palettes-icon.svg";
+import swachDockIcon from "../assets/svgs/swach-dock-icon.svg";
 ---
 
-<Layout title="Welcome to Astro.">
-	<div class="flex flex-wrap justify-center w-full">
+<Layout>
+  <div class="flex flex-wrap justify-center w-full">
     <div
       class="bg-lightest-blue flex flex-wrap justify-center px-8 py-16 w-full"
     >
       <Image
-			  alt=""
+        alt=""
         class="top-bg absolute hidden z-0 lg:block"
         src={swachDockIcon}
       />
@@ -71,7 +74,7 @@ import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
 
           <div class="w-full lg:w-1/2">
             <Image
-						  alt=""
+              alt=""
               class="inline-block ml-4 h-16 w-16"
               src={colorPickerIcon}
             />
@@ -99,9 +102,10 @@ import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
           class="flex flex-col flex-wrap items-center mb-4 mt-4 w-full lg:flex-row"
         >
           <div class="w-full lg:w-1/2">
-            <img
+            <Image
+              alt=""
               class="inline-block ml-4 h-16 w-16"
-              src="require('~/assets/svgs/palettes-icon.svg?inline')"
+              src={palettesIcon}
             />
 
             <h2 class="p-4 text-3xl md:text-5xl">Palettes</h2>
@@ -150,17 +154,15 @@ import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
               playsinline
               class="h-auto m-auto max-h-full max-w-sm p-4 w-full lg:m-0"
             >
-              <source
-                src="/video/color-harmonies.mp4"
-                type="video/mp4"
-              />
+              <source src="/video/color-harmonies.mp4" type="video/mp4" />
             </video>
           </div>
 
           <div class="w-full lg:w-1/2 z-10">
-            <img
+            <Image
+              alt=""
               class="inline-block ml-4 h-16 w-16"
-              src="require('~/assets/svgs/color-harmonies-icon.svg?inline')"
+              src={colorHarmoniesIcon}
             />
 
             <h2 class="p-4 text-3xl md:text-5xl">Color Harmonies</h2>
@@ -191,9 +193,10 @@ import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
           class="flex flex-col flex-wrap items-center mb-4 mt-4 w-full lg:flex-row z-10"
         >
           <div class="w-full lg:w-1/2 z-10">
-            <img
+            <Image
+              alt=""
               class="inline-block ml-4 h-16 w-16"
-              src="require('~/assets/svgs/contrast-checker-icon.svg?inline')"
+              src={contrastCheckerIcon}
             />
 
             <h2 class="p-4 text-3xl md:text-5xl">Contrast Checker</h2>
@@ -218,10 +221,7 @@ import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
               playsinline
               class="h-auto max-w-sm m-auto p-4 w-full lg:ml-auto lg:mr-0"
             >
-              <source
-                src="/video/contrast-checker.mp4"
-                type="video/mp4"
-              />
+              <source src="/video/contrast-checker.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
@@ -393,7 +393,8 @@ import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
 
           <div
             class="bg-swach-blue -mt-24 square rotate-45 transform lg:-mt-56 lg:h-72 lg:w-72"
-          ></div>
+          >
+          </div>
         </div>
       </div>
     </div>
@@ -401,14 +402,14 @@ import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
 </Layout>
 
 <style>
-	.modern-underline {
-  border-bottom: 5px solid #36cad2;
-}
+  .modern-underline {
+    border-bottom: 5px solid #36cad2;
+  }
 
-.top-bg {
-  height: 1030px;
-  right: -172px;
-  top: -294px;
-  width: 1030px;
-}
+  .top-bg {
+    height: 1030px;
+    right: -172px;
+    top: -294px;
+    width: 1030px;
+  }
 </style>

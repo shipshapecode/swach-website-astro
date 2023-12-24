@@ -1,7 +1,9 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
+import closeIcon from "../assets/svgs/close.svg";
+import menuIcon from "../assets/svgs/menu.svg";
+import swachDockIcon from "../assets/svgs/swach-dock-icon.svg";
 
 const { url } = Astro;
 
@@ -15,103 +17,118 @@ const scrolledDown = false;
 ---
 
 <nav
-class:list={[{
-  'bg-white': scrolledDown,
-  'bg-peach': url.pathname === '/about'
-}]}
-class="top-nav flex h-20 items-center justify-center p-6 pb-12 pt-12 sticky top-0 w-full z-50"
+  class:list={[
+    {
+      "bg-white": scrolledDown,
+      "bg-peach": url.pathname === "/about",
+    },
+  ]}
+  class="top-nav flex h-20 items-center justify-center p-6 pb-12 pt-12 sticky top-0 w-full z-50"
 >
-<div class="flex font-medium items-center justify-between max-w-6xl w-full">
-  <a
-    href="/"
-    class="font-gt-walsheim inline-flex items-center text-gray-800 text-2xl"
-  >
-    <Image
-      alt=""
-      class="inline h-10 mr-4 w-10"
-      src={swachDockIcon}
-    />
-    Swach
-</a>
-
-  <div class="block lg:hidden">
-    <button
-      aria-label="Open navigation menu"
-      class="flex items-center px-3 py-2 text-gray-600 hover:text-gray-800 text-xl"
-      @click="toggleNavMenu(true)"
+  <div class="flex font-medium items-center justify-between max-w-6xl w-full">
+    <a
+      href="/"
+      class="font-gt-walsheim inline-flex items-center text-gray-800 text-2xl"
     >
-      <img
-        class="hamburger-menu"
-        :src="require('~/assets/svgs/menu.svg?inline')"
-      />
-    </button>
-  </div>
+      <Image alt="" class="inline h-10 mr-4 w-10" src={swachDockIcon} />
+       Swach
+    </a>
 
-  <div class="nav-links hidden z-50 lg:flex">
-    <div class="lg:flex lg:flex-grow lg:justify-end">
-      <div class="flex lg:hidden justify-end m-4">
-        <button
-          aria-label="Close navigation menu"
-          class="cursor-pointer"
-          @click="toggleNavMenu(false)"
+    <div class="block lg:hidden">
+      <button
+        aria-label="Open navigation menu"
+        class="flex items-center px-3 py-2 text-gray-600 hover:text-gray-800 text-xl"
+        onclick="toggleNavMenu(true)"
+      >
+        <Image alt="" class="hamburger-menu" src={menuIcon} />
+      </button>
+    </div>
+
+    <div class="nav-links hidden z-50 lg:flex">
+      <div class="lg:flex lg:flex-grow lg:justify-end">
+        <div class="flex lg:hidden justify-end m-4">
+          <button
+            aria-label="Close navigation menu"
+            class="cursor-pointer"
+            onclick="toggleNavMenu(false)"
+          >
+            <Image alt="" class="h-10 m-2 p-2 w-10" src={closeIcon} />
+          </button>
+        </div>
+
+        <a
+          class:list={[
+            {
+              "nav-link": !scrolledDown && url.pathname === "/",
+              "nav-link-alt":
+                scrolledDown || (!scrolledDown && url.pathname !== "/"),
+            },
+          ]}
+          href="/about/"
+          onclick="toggleNavMenu(false)"
         >
-          <img
-            class="h-10 m-2 p-2 w-10"
-            :src="require('~/assets/svgs/close.svg?inline')"
-          />
-        </button>
+          About
+        </a>
+
+        <a
+          class:list={[
+            {
+              "nav-link": !scrolledDown && url.pathname === "/",
+              "nav-link-alt":
+                scrolledDown || (!scrolledDown && url.pathname !== "/"),
+            },
+          ]}
+          href="/docs/"
+          onclick="toggleNavMenu(false)"
+        >
+          Docs
+        </a>
+
+        <a
+          class:list={[
+            {
+              "text-color1 hover:text-white lg:bg-white lg:hover:bg-color1":
+                !scrolledDown && url.pathname === "/",
+              "text-white lg:bg-color1 lg:hover:bg-alt":
+                scrolledDown || url.pathname !== "/",
+            },
+          ]}
+          class="download btn hidden lg:block"
+          href="/download/"
+        >
+          Download
+        </a>
       </div>
-
-      <a
-        class:list={[{
-          'nav-link': !scrolledDown && url.pathname === '/',
-          'nav-link-alt':
-            scrolledDown || (!scrolledDown && url.pathname !== '/')
-        }
-        ]}
-        href="/about/"
-        @click.native="toggleNavMenu(false)"
-      >
-        About
-      </a>
-
-      <a
-        class:list={[{
-          'nav-link': !scrolledDown && url.pathname === '/',
-          'nav-link-alt':
-            scrolledDown || (!scrolledDown && url.pathname !== '/')
-        }]}
-        href="/docs/"
-        @click.native="toggleNavMenu(false)"
-      >
-        Docs
-      </a>
-
-      <a
-        class:list={[{
-          'text-color1 hover:text-white lg:bg-white lg:hover:bg-color1':
-            !scrolledDown && url.pathname === '/',
-          'text-white lg:bg-color1 lg:hover:bg-alt':
-            scrolledDown || url.pathname !== '/'
-        }]}
-        class="download btn hidden lg:block"
-        href="/download/"
-      >
-        Download
-      </a>
     </div>
   </div>
-</div>
 </nav>
+
+<script is:inline>
+  // eslint-disable-next-line
+  function toggleNavMenu(open) {
+    const mobileNavShown = window.innerWidth < 1024;
+    if (mobileNavShown) {
+      const navLinks = document.querySelector(".nav-links");
+
+      if (open) {
+        navLinks.classList.remove("hidden");
+        document.body.style.position = "fixed";
+      } else {
+        navLinks.classList.add("hidden");
+        document.body.style.position = "";
+      }
+    }
+  }
+</script>
 
 <style>
   .hamburger-menu {
     height: 36px;
     width: 36px;
   }
-  
+
   .download,
   .top-nav {
     @apply duration-150 transition;
   }
-  </style>
+</style>
