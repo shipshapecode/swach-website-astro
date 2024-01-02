@@ -1,9 +1,9 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
-import closeIcon from "../assets/svgs/close.svg";
-import menuIcon from "../assets/svgs/menu.svg";
-import swachDockIcon from "../assets/svgs/swach-dock-icon.svg";
+import closeIcon from '../assets/svgs/close.svg';
+import menuIcon from '../assets/svgs/menu.svg';
+import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
 
 const { url } = Astro;
 
@@ -19,8 +19,8 @@ const scrolledDown = false;
 <nav
   class:list={[
     {
-      "bg-white": scrolledDown,
-      "bg-peach": url.pathname === "/about",
+      'bg-white': scrolledDown,
+      'bg-peach': url.pathname === '/about',
     },
   ]}
   class="top-nav flex h-20 items-center justify-center p-6 pb-12 pt-12 sticky top-0 w-full z-50"
@@ -59,9 +59,9 @@ const scrolledDown = false;
         <a
           class:list={[
             {
-              "nav-link": !scrolledDown && url.pathname === "/",
-              "nav-link-alt":
-                scrolledDown || (!scrolledDown && url.pathname !== "/"),
+              'nav-link': !scrolledDown && url.pathname === '/',
+              'nav-link-alt':
+                scrolledDown || (!scrolledDown && url.pathname !== '/'),
             },
           ]}
           href="/about/"
@@ -73,9 +73,9 @@ const scrolledDown = false;
         <a
           class:list={[
             {
-              "nav-link": !scrolledDown && url.pathname === "/",
-              "nav-link-alt":
-                scrolledDown || (!scrolledDown && url.pathname !== "/"),
+              'nav-link': !scrolledDown && url.pathname === '/',
+              'nav-link-alt':
+                scrolledDown || (!scrolledDown && url.pathname !== '/'),
             },
           ]}
           href="/docs/"
@@ -87,10 +87,10 @@ const scrolledDown = false;
         <a
           class:list={[
             {
-              "text-color1 hover:text-white lg:bg-white lg:hover:bg-color1":
-                !scrolledDown && url.pathname === "/",
-              "text-white lg:bg-color1 lg:hover:bg-alt":
-                scrolledDown || url.pathname !== "/",
+              'text-color1 hover:text-white lg:bg-white lg:hover:bg-color1':
+                !scrolledDown && url.pathname === '/',
+              'text-white lg:bg-color1 lg:hover:bg-alt':
+                scrolledDown || url.pathname !== '/',
             },
           ]}
           class="download btn hidden lg:block"
@@ -108,14 +108,14 @@ const scrolledDown = false;
   function toggleNavMenu(open) {
     const mobileNavShown = window.innerWidth < 1024;
     if (mobileNavShown) {
-      const navLinks = document.querySelector(".nav-links");
+      const navLinks = document.querySelector('.nav-links');
 
       if (open) {
-        navLinks.classList.remove("hidden");
-        document.body.style.position = "fixed";
+        navLinks.classList.remove('hidden');
+        document.body.style.position = 'fixed';
       } else {
-        navLinks.classList.add("hidden");
-        document.body.style.position = "";
+        navLinks.classList.add('hidden');
+        document.body.style.position = '';
       }
     }
   }

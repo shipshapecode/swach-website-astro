@@ -1,19 +1,19 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
 
-import colorPicker from "../assets/img/color-picker.png";
-import swachImg from "../assets/img/swach.png";
+import colorPicker from '../assets/img/color-picker.png';
+import swachImg from '../assets/img/swach.png';
 
-import colorHarmoniesIcon from "../assets/svgs/color-harmonies-icon.svg";
-import colorPickerIcon from "../assets/svgs/color-picker-icon.svg";
-import contrastCheckerIcon from "../assets/svgs/contrast-checker-icon.svg";
-import palettesIcon from "../assets/svgs/palettes-icon.svg";
-import swachDockIcon from "../assets/svgs/swach-dock-icon.svg";
+import colorHarmoniesIcon from '../assets/svgs/color-harmonies-icon.svg';
+import colorPickerIcon from '../assets/svgs/color-picker-icon.svg';
+import contrastCheckerIcon from '../assets/svgs/contrast-checker-icon.svg';
+import palettesIcon from '../assets/svgs/palettes-icon.svg';
+import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
 
-const title = "A robust color management tool for the modern age.";
-const description = "A robust color management tool for the modern age.";
+const title = 'A robust color management tool for the modern age.';
+const description = 'A robust color management tool for the modern age.';
 ---
 
 <Layout description={description} title={title}>
@@ -35,9 +35,7 @@ const description = "A robust color management tool for the modern age.";
               <span class="modern-underline">modern age.</span>
             </h1>
 
-            <div
-              class="flex justify-center m-4 lg:justify-start"
-            >
+            <div class="flex justify-center m-4 lg:justify-start">
               <nuxt-link
                 class="bg-color1 btn block font-gt-walsheim text-white hover:bg-white hover:text-color1"
                 to="/download/"

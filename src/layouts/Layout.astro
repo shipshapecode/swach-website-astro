@@ -1,8 +1,8 @@
 ---
-import "../assets/styles/tailwind.css";
-import MainHead from "../components/MainHead.astro";
-import NavMenu from "../components/NavMenu.astro";
-import Footer from "../components/Footer.astro";
+import '../assets/styles/tailwind.css';
+import MainHead from '../components/MainHead.astro';
+import NavMenu from '../components/NavMenu.astro';
+import Footer from '../components/Footer.astro';
 
 const { site, url } = Astro;
 const canonicalURL = new URL(url.pathname, site);
@@ -31,7 +31,7 @@ const { description, title } = Astro.props;
     <main
       class:list={[
         {
-          "bg-peach": url.pathname === "/about",
+          'bg-peach': url.pathname === '/about',
         },
       ]}
       class="min-h-screen overflow-hidden w-screen"
@@ -46,13 +46,13 @@ const { description, title } = Astro.props;
         background-color: #fefefe;
         box-sizing: border-box;
         font-family:
-          "Ginto Normal Trial",
-          "Source Sans Pro",
+          'Ginto Normal Trial',
+          'Source Sans Pro',
           -apple-system,
           BlinkMacSystemFont,
-          "Segoe UI",
+          'Segoe UI',
           Roboto,
-          "Helvetica Neue",
+          'Helvetica Neue',
           Arial,
           sans-serif;
         font-size: 16px;
@@ -91,16 +91,16 @@ const { description, title } = Astro.props;
       }
 
       @font-face {
-        font-family: "Ginto Normal Trial";
-        src: url("/fonts/GintoNormalTrial-Regular.woff2") format("woff");
+        font-family: 'Ginto Normal Trial';
+        src: url('/fonts/GintoNormalTrial-Regular.woff2') format('woff');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
       }
 
       @font-face {
-        font-family: "GT Walsheim";
-        src: url("/fonts/GTWalsheimMedium.woff2") format("woff");
+        font-family: 'GT Walsheim';
+        src: url('/fonts/GTWalsheimMedium.woff2') format('woff');
         font-weight: 500;
         font-style: normal;
         font-display: swap;
