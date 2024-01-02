@@ -1,5 +1,6 @@
 ---
 title: 'Releases'
+description: 'Version history and release notes for all versions of Swach.'
 ---
 
 ## Swach 1.0.2
