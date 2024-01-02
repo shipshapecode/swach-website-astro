@@ -6,15 +6,13 @@ import menuIcon from '../assets/svgs/menu.svg';
 import swachDockIcon from '../assets/svgs/swach-dock-icon.svg';
 
 const { url } = Astro;
-
-const scrolledDown = false;
 ---
 
 <nav
   class:list={[
     {
-      'bg-white': scrolledDown,
-      'bg-peach': url.pathname === '/about',
+      homepage: url.pathname === '/',
+      'about-page': url.pathname === '/about/',
     },
   ]}
   class="top-nav flex h-20 items-center justify-center p-6 pb-12 pt-12 sticky top-0 w-full z-50"
@@ -53,11 +51,10 @@ const scrolledDown = false;
         <a
           class:list={[
             {
-              'nav-link': !scrolledDown && url.pathname === '/',
-              'nav-link-alt':
-                scrolledDown || (!scrolledDown && url.pathname !== '/'),
+              'nav-link-alt': url.pathname !== '/',
             },
           ]}
+          class="text-link"
           href="/about/"
           onclick="toggleNavMenu(false)"
         >
@@ -67,11 +64,10 @@ const scrolledDown = false;
         <a
           class:list={[
             {
-              'nav-link': !scrolledDown && url.pathname === '/',
-              'nav-link-alt':
-                scrolledDown || (!scrolledDown && url.pathname !== '/'),
+              'nav-link-alt': url.pathname !== '/',
             },
           ]}
+          class="text-link"
           href="/docs/"
           onclick="toggleNavMenu(false)"
         >
@@ -82,9 +78,8 @@ const scrolledDown = false;
           class:list={[
             {
               'text-color1 hover:text-white lg:bg-white lg:hover:bg-color1':
-                !scrolledDown && url.pathname === '/',
-              'text-white lg:bg-color1 lg:hover:bg-alt':
-                scrolledDown || url.pathname !== '/',
+                url.pathname === '/',
+              'text-white lg:bg-color1 lg:hover:bg-alt': url.pathname !== '/',
             },
           ]}
           class="download btn hidden lg:block"
@@ -98,6 +93,18 @@ const scrolledDown = false;
 </nav>
 
 <script is:inline>
+  function handleScroll() {
+    const topNav = document.querySelector('.top-nav');
+
+    if (window.scrollY >= 80) {
+      topNav?.classList.add('scrolled');
+    } else {
+      topNav?.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+
   // eslint-disable-next-line
   function toggleNavMenu(open) {
     const mobileNavShown = window.innerWidth < 1024;
@@ -105,10 +112,10 @@ const scrolledDown = false;
       const navLinks = document.querySelector('.nav-links');
 
       if (open) {
-        navLinks.classList.remove('hidden');
+        navLinks?.classList.remove('hidden');
         document.body.style.position = 'fixed';
       } else {
-        navLinks.classList.add('hidden');
+        navLinks?.classList.add('hidden');
         document.body.style.position = '';
       }
     }
@@ -121,8 +128,89 @@ const scrolledDown = false;
     width: 36px;
   }
 
+  .nav-links {
+    @apply bg-white fixed flex-grow h-screen inset-0 w-full;
+  }
+
+  @screen lg {
+    .nav-links {
+      @apply bg-transparent h-auto items-center pl-2 pr-2 pt-2 static w-auto;
+    }
+  }
+
+  .nav-link {
+    @apply block font-bold p-2 mr-4 text-base text-gray-600;
+  }
+
+  .nav-link-alt {
+    @apply block font-bold p-2 mr-4 text-base text-color1;
+  }
+
+  .nav-link:active,
+  .nav-link:visited {
+    @apply text-gray-600;
+  }
+
+  @screen lg {
+    .nav-link,
+    .nav-link-alt {
+      @apply flex items-center mt-0;
+    }
+
+    .nav-link,
+    .nav-link:active,
+    .nav-link:visited {
+      @apply text-white;
+    }
+
+    .nav-link-alt,
+    .nav-link-alt:active,
+    .nav-link-alt:visited {
+      @apply !text-color1;
+    }
+  }
+
+  .nav-link:hover {
+    @apply text-color1;
+  }
+
+  .nav-link-alt:hover {
+    @apply !text-alt;
+  }
+
+  .nav-link:active::after,
+  .nav-link-alt:active::after {
+    @apply bg-alt h-2 inline-block relative rounded-full w-2;
+
+    content: '\A';
+    top: 20px;
+    right: 50%;
+  }
+
   .download,
   .top-nav {
     @apply duration-150 transition;
+  }
+
+  .top-nav {
+    .text-link {
+      @apply nav-link;
+    }
+
+    &.scrolled {
+      @apply bg-white;
+
+      .download {
+        @apply text-white lg:bg-color1 lg:hover:bg-alt;
+      }
+
+      .text-link {
+        @apply nav-link-alt;
+      }
+    }
+
+    &.about-page {
+      @apply bg-peach;
+    }
   }
 </style>
