@@ -23,7 +23,7 @@ const { url } = Astro;
       class="font-gt-walsheim inline-flex items-center text-gray-800 text-2xl"
     >
       <Image alt="" class="inline h-10 mr-4 w-10" src={swachDockIcon} />
-       Swach
+      Swach
     </a>
 
     <div class="block lg:hidden">
@@ -51,6 +51,7 @@ const { url } = Astro;
         <a
           class:list={[
             {
+              active: url.pathname === '/about/',
               'nav-link-alt': url.pathname !== '/',
             },
           ]}
@@ -178,8 +179,8 @@ const { url } = Astro;
     @apply !text-alt;
   }
 
-  .nav-link:active::after,
-  .nav-link-alt:active::after {
+  .nav-link.active::after,
+  .nav-link-alt.active::after {
     @apply bg-alt h-2 inline-block relative rounded-full w-2;
 
     content: '\A';
