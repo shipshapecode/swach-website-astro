@@ -7,6 +7,7 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
   adapter: vercel({
+    imageService: true,
     speedInsights: {
       enabled: true,
     },
