@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-
 import Layout from '../layouts/Layout.astro';
 import shareIcon from '../assets/svgs/share.svg';
 
@@ -41,7 +39,7 @@ const description = 'View this shared palette online and import it into Swach.';
             class="bg-gray-200 h-12 p-4 rounded-full w-12"
             title="Export to Swach"
           >
-            <Image alt="Share" class="h-full w-full" src={shareIcon} />
+            <img alt="Share" class="h-full w-full" src={shareIcon.src} />
           </a>
         </div>
 
