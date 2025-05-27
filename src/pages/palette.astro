@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+
+import Layout from '../layouts/Layout.astro';
+import shareIcon from '../assets/svgs/share.svg';
+
+export const prerender = false;
+
+const queryData = Astro.url.searchParams.get('data');
+console.log('*******');
+console.log(queryData);
+
+let colors: Array<{ hex: string; name: string }> = [];
+let name = 'Palette';
+let swachLink = '';
+let titleize = (str: string) => str.replace(/\b\w/g, (c) => c.toUpperCase());
+
+if (queryData) {
+  try {
+    const data = JSON.parse(decodeURIComponent(queryData));
+    colors = data.colors ?? [];
+    name = data.name ?? 'Palette';
+    swachLink = `swach://?data=${encodeURIComponent(JSON.stringify(data))}`;
+  } catch (e) {
+    console.error('Invalid data param:', e);
+  }
+}
+
+const description = 'View this shared palette online and import it into Swach.';
+---
+
+<Layout description={description} title="Palette">
+  <div class="flex flex-wrap justify-center w-full">
+    <div class="flex flex-wrap justify-center mt-10 pb-20 pt-10 px-8 w-full">
+      <div class="max-w-6xl w-full z-10">
+        <div class="flex items-center justify-between mb-4 w-full">
+          <h1 class="text-4xl">
+            {titleize(name)}
+          </h1>
+
+          <a
+            href={swachLink}
+            class="bg-gray-200 h-12 p-4 rounded-full w-12"
+            title="Export to Swach"
+          >
+            <Image alt="Share" class="h-full w-full" src={shareIcon} />
+          </a>
+        </div>
+
+        <div class="flex h-24 overflow-hidden rounded-2xl w-full lg:h-72">
+          {
+            colors.map((color) => (
+              <div class="flex-1" style={`background-color: ${color.hex};`} />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="border-t border-gray-200 divide-y divide-gray-200 flex flex-wrap justify-center w-full"
+    >
+      {
+        colors.map((color) => (
+          <div class="flex justify-center px-8 w-full">
+            <div class="max-w-6xl pb-20 pt-10 w-full z-10">
+              <h3 class="mb-4 text-lg">
+                <span class="inline-block mr-4">{color.name}</span>
+                <span class="text-gray-500 uppercase">{color.hex}</span>
+              </h3>
+              <div
+                class="h-12 rounded-xl w-full lg:h-24 lg:rounded-2xl"
+                style={`background-color: ${color.hex};`}
+              />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

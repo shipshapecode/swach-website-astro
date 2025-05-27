@@ -1,13 +1,13 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import vercelStatic from '@astrojs/vercel/static';
+import vercel from '@astrojs/vercel';
 
 import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  adapter: vercelStatic({
+  adapter: vercel({
     imageService: true,
     speedInsights: {
       enabled: true,
