@@ -7,8 +7,6 @@ import shareIcon from '../assets/svgs/share.svg';
 export const prerender = false;
 
 const queryData = Astro.url.searchParams.get('data');
-console.log('*******');
-console.log(queryData);
 
 let colors: Array<{ hex: string; name: string }> = [];
 let name = 'Palette';
